@@ -3,13 +3,14 @@
 <h2 align="center"> FastAPI Template </h2>
 <h4 align="center"> A template for the beginners </h4>
 
-
 ---
-## About
-This is a beginner's template for getting started with FastAPI.
-It uses SQLAlchemy as the ORM. 
 
-Contributions are welcome. 
+## About
+
+This is a beginner's template for getting started with FastAPI.
+It uses SQLAlchemy as the ORM.
+
+Contributions are welcome.
 
 ## Features
 
@@ -22,26 +23,27 @@ Contributions are welcome.
 
 ## Dependencies
 
-- Python 3.7+
+- Python 3.10+
 - Pip
-- Other listed in requirements.txt
+- [Poetry](https://python-poetry.org/docs/)
+- Other listed in pyproject.toml [tool.poetry.dependencies]
 
 ## Running
 
 - Clone the repo using
 
 ```bash
-git clone https://github.com/mdhishaamakhtar/fastapi-sqlalchemy-postgres-template
+git clone https://github.com/manamimebom/fastapi-sqlalchemy-sqlite-template.git
 ```
 
-- Create a Virtual Environment using
+- (Optonal) Create a Virtual Environment using virtualenv or other tools you prefer
 
 ```bash
 sudo pip install virtualenv
 virtualenv env
 ```
 
-- Activate the virtualenv
+- (Optonal) Activate the virtualenv
 
 ```bash
 env\Scripts\activate # for windows
@@ -51,20 +53,35 @@ source env/bin/activate # for linux and mac
 - Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install poetry
+poetry install
 ```
 
-- Setting up environment variables
+- (Optional) Create a sqlite3 database
 
-| Key     | Value |
-| ----------- | ----------- |
-| DATABASE_URL   | postgresql://user:password@host:port/db|
+```bash
+touch xxx.db
+```
+
+- Setting up environment variables in .env
+
+| Key          | Value                    |
+| ------------ | ------------------------ |
+| DATABASE_URL | sqlite:///path_to_xxx.db |
 
 - To run the project
 
 ```bash
 uvicorn main:app
 ```
+
+- Or run in development mode
+
+```bash
+uvicorn main:app --reload
+```
+
+if the shell shows `command not found: uvicorn`, try to restart the shell first.
 
 ## Contributors
 
