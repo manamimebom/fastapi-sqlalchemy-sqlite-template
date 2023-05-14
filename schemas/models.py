@@ -1,5 +1,4 @@
 from typing import Optional
-from uuid import UUID
 
 from pydantic import BaseModel
 
@@ -9,7 +8,7 @@ class HealthResponse(BaseModel):
 
 
 class Post(BaseModel):
-    id: Optional[UUID]
+    id: Optional[str]
     title: str
     description: str
 
@@ -22,7 +21,7 @@ class DeletePostResponse(BaseModel):
 
 
 class UpdatePost(BaseModel):
-    id: UUID
+    id: str
     title: str
     description: str
 
