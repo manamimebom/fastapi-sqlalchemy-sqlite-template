@@ -16,6 +16,10 @@ def posts_get_all(db: Session):
     return db.query(Posts).all()
 
 
+def posts_get_by_description(db: Session, keyword: str):
+    return db.query(Posts).filter(Posts.description.contains(keyword)).all()
+
+
 def post_get_one(db: Session, id: str):
     return db.query(Posts).filter_by(id=id).one()
 

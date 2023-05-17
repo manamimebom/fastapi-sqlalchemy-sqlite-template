@@ -11,6 +11,7 @@ from utils.post_crud import (
     post_get_one,
     post_update,
     posts_get_all,
+    posts_get_by_description,
 )
 
 router = APIRouter(tags=["posts"])
@@ -22,7 +23,9 @@ def create_post(post: Post, db: Session = Depends(get_db)):
 
 
 @router.get("/list/all", status_code=status.HTTP_200_OK, response_model=List[Post])
-def get_all_posts(db: Session = Depends(get_db)):
+def get_all_posts(db: Session = Depends(get_db), keyword: str=None):
+    if keyword:
+        return posts_get_by_description(db=db, keyword=keyword)
     return posts_get_all(db=db)
 
 
